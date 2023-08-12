@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+<!--body-->
+{% block content %}
+<div class="container-fluid mt-3">
+  <div class="row">
+    <!--row-->
+    
+    <!--coloun-->
+
+
+    <!--categree filter total part12 he hm side me 3 part categery ke liye cover krna chahte he--> 
+    <div class="col-lg-3 mx-auto">
+      <div class="list-group">
+        <a href="/" class="list-group-item list-group-item-action ">All Product</a>
+        {% for categories in category %}
+        <a href="/?categories={{categories.id}}" class="list-group-item list-group-item-action ">{{categories.name}}</a>
+        {% endfor %} <!--this is called query string ? -->
+      </div>
+
+    </div>
+
+
+    
+    <!--all product-->
+    <div id='products' class="col-lg-9 mx-auto">  <!--using bootsrap card-->
+      <div class="row mx-auto">
+        {% for product in products %}
+        <div class="card mx-auto mb-3"  style="width: 18rem;">
+            <img src="{{product.image.url}}" class="card-img-top" alt="..."> <!--using media url dynamic image-->
+            <div class="card-body">
+              <p class="card-title">{{product.name}}</p>
+              <p class="card-text"><b>{{product.price}}</b></p>
+
+              <form action= "post" method="POST">
+                  {% csrf_token %}
+                <input hidden type="text" name='product' value='{{product.id}}'>
+                <div>
+              <input type="submit" class="float-left btn btn-light border form-control btn-sm" value="Add To cart">
+                </div>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+   </div>
+    </div>
+  </div>
+ </div>
+{% endblock %}
+
+
+   

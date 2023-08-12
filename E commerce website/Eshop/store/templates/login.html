@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="p-5 m-5">
+        <div class="col-lg-4 mt-4 mb-4 mx-auto border rounded pt-8">
+            <div class="text-center col">
+            
+                <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Shopping_cart_with_food_clip_art_2.svg/307px-Shopping_cart_with_food_clip_art_2.svg.png" alt=""
+                class="" style="height: 150px;">
+            </div>
+            <h3 class="alert alert-light border mt-4 mb-4 rounded mt-4">Login Here</h3>
+            <form action="/login" method="POST">
+                {% csrf_token %}
+
+                {% if error %}    
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+
+                <!--email-->
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" name="email" id="" class="form-control form-control-sm" placeholder="pooja@gmail.com">
+                </div>
+                <br>
+                  
+                <!--Password-->   
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" id="" class="form-control form-control-sm" placeholder="*********">
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <input class="btn btn-sm btn-info col-lg-4" type="submit" value="Login">
+                </div>
+                <br>
+
+                
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
